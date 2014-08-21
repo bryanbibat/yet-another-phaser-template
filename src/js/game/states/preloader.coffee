@@ -1,4 +1,5 @@
-cacheBust = if navigator.isCocoonJS then "" else "#grunt-cache-bust"
+# force cache busting to work
+cacheBust = ["./bullet.png#grunt-cache-bust", "./powerup.wav#grunt-cache-bust" ]
 
 class Preloader
   constructor: (game) ->
@@ -23,8 +24,8 @@ class Preloader
     @load.setPreloadSprite @preloadBar
     
     #  Here we load the rest of the assets our game needs.
-    @load.image "bullet", "images/bullet.png#{cacheBust}"
-    @load.audio "powerUp", ["audio/powerup.wav"]
+    @load.image "bullet", "./bullet.png"
+    @load.audio "powerUp", ["./powerup.wav"]
     #this.load.audio('titleMusic', ['audio/main_menu.mp3']);
     #  + lots of other required assets here
     return

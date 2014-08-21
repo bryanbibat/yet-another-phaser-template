@@ -1,7 +1,9 @@
 Persist = require("Persist")
 Store = new Persist.Store("LocalStorage")
 properties = require("../properties")
-cacheBust = if navigator.isCocoonJS then "" else "#grunt-cache-bust"
+
+# force cache busting to work
+cacheBust = ["./preloader-bar.png#grunt-cache-bust"]
 
 class Boot
   constructor: (game) ->
@@ -9,7 +11,7 @@ class Boot
   preload: ->
     
     #  Here we load the assets required for our preloader (in this case a loading bar)
-    @load.image "preloaderBar", "./images/preloader-bar.png#{cacheBust}"
+    @load.image "preloaderBar", "./preloader-bar.png"
     return
 
   create: ->

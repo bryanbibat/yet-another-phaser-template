@@ -25,8 +25,8 @@ module.exports = function (grunt) {
     project: {
       src: 'src/js',
       js: '<%= project.src %>/game/{,*/}*.js',
-      dest: 'build/js',
-      bundle: 'build/js/app.min.js',
+      dest: 'build/',
+      bundle: 'build/app.min.js',
       port: properties.port,
       banner:
         '/*!\n' +
@@ -144,9 +144,9 @@ module.exports = function (grunt) {
         files: [
           { 
             src: [ 
+              '<%= project.bundle %>',
               'build/index.html',
-              'build/cocoon.html',
-              '<%= project.bundle %>'
+              'build/cocoon.html'
             ]
           }
         ]
@@ -171,7 +171,7 @@ module.exports = function (grunt) {
     stylus: {
       compile: {
         files: {
-          'build/style/index.css': ['src/style/index.styl'] 
+          'build/index.css': ['src/style/index.styl'] 
         },
         options: {
           sourcemaps: !productionBuild
@@ -189,8 +189,8 @@ module.exports = function (grunt) {
       compile: { 
         files: [ 
           { 
-            src: 'src/images/*.png',
-            dest: 'src/images/'
+            src: 'src/*.png',
+            dest: 'src/'
           }
         ]
       }
@@ -199,12 +199,12 @@ module.exports = function (grunt) {
     copy: {
       images: {
         files: [
-          { expand: true, cwd: 'src/images/', src: ['**'], dest: 'build/images/' }
+          { expand: true, cwd: 'src/images/', src: ['**'], dest: 'build/' }
         ]
       },
       audio: {
         files: [
-          { expand: true, cwd: 'src/audio/', src: ['**'], dest: 'build/audio/' }
+          { expand: true, cwd: 'src/audio/', src: ['**'], dest: 'build/' }
         ]
       }
     },
