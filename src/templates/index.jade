@@ -7,7 +7,10 @@ head
   meta(property="og:title", content=properties.title)
   meta(property="og:description", content=properties.description)
 
-  link(rel='stylesheet', href='./index.css')
+  style(type="text/css")
+    | body { margin: 0 0 0px 0; background: #333; }
+    | #gameContainer canvas { margin: 0 auto; }
+
   link(rel='shortcut icon', href='./favicon.ico')
 
   title=properties.title

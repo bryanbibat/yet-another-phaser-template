@@ -221,14 +221,24 @@ module.exports = function (grunt) {
     },
 
     compress: {
-      options: {
-        archive: '<%= pkg.name %>.zip'
-      },
       zip: { 
+        options: {
+          archive: '<%= pkg.name %>.zip'
+        },
         files: [ { expand: true, cwd: 'build/', src: ['**/*'], dest: '<%= pkg.name %>/' } ]
       },
       cocoon: {
+        options: {
+          archive: '<%= pkg.name %>.zip'
+        },
         files: [ { expand: true, cwd: 'build/', src: ['**/*'] } ]
+      },
+      assets: {
+        options: {
+          mode: 'gzip',
+          level: 9
+        },
+        files: [ { expand: true, cwd: 'build/', src: ['**/*.html', '**/*.css', '**/*.js'], dest: 'build/' } ]
       }
     },
 
@@ -261,7 +271,8 @@ module.exports = function (grunt) {
     'stylus',
     'uglify',
     'copy',
-    'cacheBust'
+    'cacheBust',
+    'compress:assets'
   ]);
 
   grunt.registerTask('optimise', ['pngmin', 'copy:images']);
